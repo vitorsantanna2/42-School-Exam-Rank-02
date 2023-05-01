@@ -3,23 +3,25 @@
 
 int main(int argc, char const *argv[])
 {
-	int nbr1;
-	int nbr2;
+	int string1 = atoi(argv[1]);
+	int string2 = atoi(argv[2]);
 
-	if (argc == 3)
+	if (argc != 3)
 	{
-		if ((nbr1 = atoi(argv[1])) > 0 && (nbr2 = atoi(argv[2])) > 0)
-		{
-			while (nbr1 != nbr2)
-			{
-				if (nbr1 > nbr2)
-					nbr1 -= nbr2;
-				else
-					nbr2 -= nbr1;
-			}
-			printf("%d", nbr1);
-		}
+		printf("\n");
+		return 0;
 	}
-	printf("\n");
-	return (0);
+	if (string1 <= 0 || string2 <= 0)
+	{
+		printf("\n");
+		return 0;
+	}
+	while (string2 != 0)
+	{
+		int temporary = string2;
+		string2 = string1 % string2;
+		string1 = temporary;
+	}
+	printf("%d\n", string1);
+	return 0;
 }
